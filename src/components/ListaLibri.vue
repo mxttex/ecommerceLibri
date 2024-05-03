@@ -67,4 +67,8 @@ import SiteNavbar from './SiteNavbar.vue';
         overflow: hidden; /* Impedisce il contenuto di sforare l'altezza massima */
         max-width: 300px;
     }
+    img{
+        height: 400px;
+        width: 280px;
+    }
 </style>
