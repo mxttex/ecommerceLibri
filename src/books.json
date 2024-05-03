@@ -34,8 +34,9 @@
       "category": "Fantasy",
       "coverUrl": "https://covers.openlibrary.org/b/id/0012373652-M.jpg",
       "first_publish_year": 1997
-    },
-
+    }
+  ],
+  "cart":[
     {
       "title": "Don Chisciotte",
       "author": "Miguel de Cervantes",
