@@ -44,25 +44,26 @@
 </script>
 
 <template>
-    <div class="container-fluid">
-        <SiteNavbar @filter-changed="reloadBooks" />
-        <div class="table">
-            <thead>
+    <SiteNavbar @filter-changed="reloadBooks" />
+    <div >
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <td class="col-10">BOOK</td>
+                    <th scope="col">Cart Books</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="cartBook in this.books" :key="cartBook.id">
-                <td ckass="col-3"><img :src="cartBook.coverUrl"></td>
-                <td>{{ cartBook.title }}</td>
-                <td>{{ cartBook.author }}</td>
-                <td>{{ cartBook.category }}</td>
-                <td><button class="btn btn-primary">Remove from Cart</button></td>
+                <tr v-for="book in this.books" :key="book.id">
+                    <td><img :src="book.coverUrl" style="max-width: 100px;"></td>
+                    <td><div class="d-flex justify-content-left">{{ book.title }}</div></td>
+                    <td><div class="d-flex justify-content-left">{{ book.author }}</div></td>
+                    <td><div class="d-flex justify-content-left">{{ book.category }}</div></td>
+                    <td><div class="d-flex justify-content-center"><button class="btn btn-primary">Remove from Cart</button></div></td>
                 </tr>
             </tbody>
-        </div>
-    </div>
+        </table>
+</div>
+
 </template>
 
 <style>
@@ -70,12 +71,16 @@
         width: 100%;
     }
     table{
-        border: 1px solid black;
+        border: 5px solid black;
         width: 80%;
         
     }
     img{
         width: 80px;
+    }
+    td{
+        justify-content: center;
+        align-content: center;
     }
     
     

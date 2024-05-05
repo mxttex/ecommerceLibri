@@ -27,13 +27,6 @@
       "category": "Fantasy",
       "coverUrl": "https://covers.openlibrary.org/b/id/9269962-M.jpg",
       "first_publish_year": 1996
-    },
-    {
-      "title": "Harry Potter e la pietra filosofale",
-      "author": "J.K. Rowling",
-      "category": "Fantasy",
-      "coverUrl": "https://covers.openlibrary.org/b/id/0012373652-M.jpg",
-      "first_publish_year": 1997
     }
   ],
   "cart":[
@@ -43,6 +36,13 @@
       "category": "Classici",
       "coverUrl": "https://covers.openlibrary.org/b/id/7977593-L.jpg",
       "first_publish_year": 1905
+    },
+    {
+      "title": "Harry Potter e la pietra filosofale",
+      "author": "J.K. Rowling",
+      "category": "Fantasy",
+      "coverUrl": "https://covers.openlibrary.org/b/id/0012373652-M.jpg",
+      "first_publish_year": 1997
     }
   ]
 }

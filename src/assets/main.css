@@ -1,3 +1,6 @@
 a{
   text-decoration:dashed;
 }
+td{
+  justify-content: center;
+}
