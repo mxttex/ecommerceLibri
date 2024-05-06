@@ -3,16 +3,17 @@
     export default{
         data(){
             return{
-                endpoint : "http://localhost:3000/cart/",
+                cartEndpoint : "http://localhost:3000/cart/",
+                homeEndpoint : "http://localhost:3000/books/",
                 books : [],
-                allBooks: []
+                allBooks: [],
             }
         },
         components:{SiteNavbar},
         methods:{
             async loadFilteredBooks(filter){
                 let filteredBooks = [];
-                if(filter === ""){
+                if(filter === " "){
                     filteredBooks = this.allBooks; 
                 }
                 else{
@@ -27,10 +28,28 @@
                 this.books = await this.loadFilteredBooks(filter);
             },
             async loadBooks(){
-                const list = await fetch(this.endpoint);
+                const list = await fetch(this.cartEndpoint);
                 const data = list.json()
-                
                 return data
+            },
+            async removeFromCart(book){
+                await fetch(this.homeEndpoint,
+                {
+                    method:'POST',
+                    headers:{
+                    'Content-type':'application/json'
+                    },
+                    body: JSON.stringify(book)
+                })
+                await fetch(this.cartEndpoint + book.id,
+                {
+                    method:'DELETE',
+                    headers:{
+                    'Content-type':'application/json'
+                    }
+                })
+                this.allBooks = await this.loadBooks();
+                this.reloadBooks(" ");
             }
         },
         async created(){
@@ -58,11 +77,13 @@
                     <td><div class="d-flex justify-content-left">{{ book.title }}</div></td>
                     <td><div class="d-flex justify-content-left">{{ book.author }}</div></td>
                     <td><div class="d-flex justify-content-left">{{ book.category }}</div></td>
-                    <td><div class="d-flex justify-content-center"><button class="btn btn-primary">Remove from Cart</button></div></td>
+                    <td><div class="d-flex justify-content-center"><button class="btn btn-primary" @click="removeFromCart(book)">Remove from Cart</button></div></td>
                 </tr>
             </tbody>
         </table>
-</div>
+
+        <button class="btn btn-primary">Checkout</button>
+    </div>
 
 </template>
 

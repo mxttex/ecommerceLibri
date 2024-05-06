@@ -27,15 +27,6 @@
       "category": "Fantasy",
       "coverUrl": "https://covers.openlibrary.org/b/id/9269962-M.jpg",
       "first_publish_year": 1996
-    }
-  ],
-  "cart":[
-    {
-      "title": "Don Chisciotte",
-      "author": "Miguel de Cervantes",
-      "category": "Classici",
-      "coverUrl": "https://covers.openlibrary.org/b/id/7977593-L.jpg",
-      "first_publish_year": 1905
     },
     {
       "title": "Harry Potter e la pietra filosofale",
@@ -43,7 +34,16 @@
       "category": "Fantasy",
       "coverUrl": "https://covers.openlibrary.org/b/id/0012373652-M.jpg",
       "first_publish_year": 1997
+    },
+
+    {
+      "title": "Don Chisciotte",
+      "author": "Miguel de Cervantes",
+      "category": "Classici",
+      "coverUrl": "https://covers.openlibrary.org/b/id/7977593-L.jpg",
+      "first_publish_year": 1905
     }
-  ]
+  ],
+  "cart":[]
+
 }
-  

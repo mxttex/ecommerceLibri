@@ -20,7 +20,7 @@
                 
             </ul>
             <form class="d-flex" role="search" @submit.prevent="onSubmit">
-                <input class="form-control me-2" v-model="filter" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" v-model="filter" type="search" placeholder="Book's title" aria-label="Search">
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
             </div>
@@ -35,6 +35,7 @@
     router-link{
         text-decoration: none;
     }
+    
 </style>
 
 <script>

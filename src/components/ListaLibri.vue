@@ -4,7 +4,8 @@ import SiteNavbar from './SiteNavbar.vue';
     export default{
         data(){
             return{
-                endpoint : "http://localhost:3000/books/",
+                catalogEndpoint : "http://localhost:3000/books/",
+                cartEndpoint : "http://localhost:3000/cart/",
                 books: [],
                 allBooks: []
             }
@@ -15,7 +16,7 @@ import SiteNavbar from './SiteNavbar.vue';
         },
         methods:{
             async fetchBooks(){
-            const list = await fetch(this.endpoint);
+            const list = await fetch(this.catalogEndpoint);
             const data = list.json()
             
             return data
@@ -36,7 +37,31 @@ import SiteNavbar from './SiteNavbar.vue';
             },
             async reloadBooks(filter){
                 this.books = await this.FilterBook(filter);
+            },
+            async addToCart(book){
+                await fetch(this.cartEndpoint + book.id,
+                    {
+                        method : "POST",
+                        headers:{
+                        'Content-type':'application/json'
+                        },
+                        body: JSON.stringify(book)
+                    }
+                )
+
+                await fetch(this.catalogEndpoint + book.id,
+                    {
+                        method : "DELETE",
+                        headers:{
+                            "Content-type":"application/json"
+                        }
+                    }
+                )
+
+                this.allBooks = await this.fetchBooks()
+                await this.reloadBooks(" ");
             }
+            
         },
         components:{SiteNavbar}
     }
@@ -53,7 +78,7 @@ import SiteNavbar from './SiteNavbar.vue';
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ book.title }}, {{ book.author }}</h5>
                         <p class="card-text">Category: {{ book.category }} || First Publish Year: {{ book.first_publish_year }}</p>
-                        <a class="btn btn-primary mt-auto">Add to Cart</a>
+                        <a class="btn btn-primary mt-auto" @click="addToCart(book)">Add to Cart</a>
                     </div>
                 </div>
             </div>
