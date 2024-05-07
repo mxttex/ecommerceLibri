@@ -9,12 +9,12 @@
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item">
                     <a class="nav-link" >
-                        <router-link to="/" style="color: aliceblue;">Home</router-link>
+                        <router-link to="/catalog" style="color: aliceblue;" @click="$emit('change-view', true)">Home</router-link>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" >
-                        <router-link to="/carrello" style="color: aliceblue;">Cart</router-link>
+                        <router-link to="/carrello" style="color: aliceblue;"  @click="$emit('change-view', false)">Cart</router-link>
                     </a>
                 </li>
                 
@@ -31,22 +31,23 @@
 <style scoped>
     a{
         color: white;
-    }
-    router-link{
         text-decoration: none;
     }
-    
+
 </style>
 
 <script>
     export default{
         data(){
-            this.filter = "";
+            return{
+                filter : ""
+            }
         },
         methods:{
             onSubmit(e){
                 this.$emit("filter-changed", this.filter)
             }
-        }
+        },
+        emits:['filter-changed', 'change-view']
     }
 </script>
