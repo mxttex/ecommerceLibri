@@ -1,28 +1,20 @@
 {
   "books": [
     {
+      "id": "5b5d",
+      "title": "Don Chisciotte",
+      "author": "Miguel de Cervantes",
+      "category": "Classici",
+      "coverUrl": "https://covers.openlibrary.org/b/id/7977593-L.jpg",
+      "first_publish_year": 1905
+    },
+    {
       "id": "2e64",
       "title": "Il fu Mattia Pascal",
       "author": "Luigi Pirandello",
       "category": "Romanzo",
       "coverUrl": "https://covers.openlibrary.org/b/id/0010362119-L.jpg",
       "first_publish_year": 1949
-    },
-    {
-      "id": "2dde",
-      "title": "Il Trono di Spade",
-      "author": "George R.R. Martin",
-      "category": "Fantasy",
-      "coverUrl": "https://covers.openlibrary.org/b/id/9269962-M.jpg",
-      "first_publish_year": 1996
-    },
-    {
-      "id": "96f3",
-      "title": "Il Signore degli Anelli",
-      "author": "J.R.R. Tolkien",
-      "category": "Fantasy",
-      "coverUrl": "https://covers.openlibrary.org/b/id/0013119612-M.jpg",
-      "first_publish_year": 1954
     },
     {
       "id": "abcd",
@@ -33,22 +25,29 @@
       "first_publish_year": 1997
     },
     {
-      "id": "5b5d",
-      "title": "Don Chisciotte",
-      "author": "Miguel de Cervantes",
-      "category": "Classici",
-      "coverUrl": "https://covers.openlibrary.org/b/id/7977593-L.jpg",
-      "first_publish_year": 1905
-    }
-  ],
-  "cart": [
-    {
       "id": "1c45",
       "title": "Orgoglio e pregiudizio",
       "author": "Jane Austen",
       "category": "Romanzo",
       "coverUrl": "https://covers.openlibrary.org/b/id/14552692-M.jpg",
       "first_publish_year": 1813
+    },
+    {
+      "id": "96f3",
+      "title": "Il Signore degli Anelli",
+      "author": "J.R.R. Tolkien",
+      "category": "Fantasy",
+      "coverUrl": "https://covers.openlibrary.org/b/id/0013119612-M.jpg",
+      "first_publish_year": 1954
+    },
+    {
+      "id": "2dde",
+      "title": "Il Trono di Spade",
+      "author": "George R.R. Martin",
+      "category": "Fantasy",
+      "coverUrl": "https://covers.openlibrary.org/b/id/9269962-M.jpg",
+      "first_publish_year": 1996
     }
-  ]
+  ],
+  "cart": []
 }

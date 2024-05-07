@@ -8,47 +8,101 @@
       return{
         catalogEndpoint : "http://localhost:3000/books/",
         cartEndpoint : "http://localhost:3000/cart/",
-        books: [],
-        allBooks: [],
-        catalogMode : true,
+        catalogBooks: [],
+        cartBooks: [],
         filter : ""
       }
     },
+    async mounted(){
+      this.catalogBooks = await this.fetchBooks(true);
+      this.cartBooks = await this.fetchBooks(false)
+    },
     async created(){
-      this.allBooks = await this.fetchBooks();
-      this.books = this.allBooks;
+      this.catalogBooks = await this.fetchBooks(true);
+      this.cartBooks = await this.fetchBooks(false)
     },
     methods:{
-      async fetchBooks(){
+      async fetchBooks(mode){
         let endpoint;
-        endpoint = this.catalogMode ? this.catalogEndpoint : this.cartEndpoint;
-
+        endpoint = mode ? this.catalogEndpoint : this.cartEndpoint;
         const list = await fetch(endpoint);
         const data = list.json();
 
         return data;
       },
-      reloadFilter(filter){
-        let filteredBooks = [];
-
-        if(filter === ""){
-          filteredBooks = this.allBooks;
+      async reloadFilter(filter){
+        this.filter = filter;
+        if(this.filter === ""){
+          this.cartBooks = await this.fetchBooks(false);
+          this.catalogBooks = await this.fetchBooks(true);
         }
         else{
-          filteredBooks = this.allBooks.filter(
+          this.catalogBooks = this.catalogBooks.filter(
+            book => { return book.title.includes(filter)}
+          )
+          this.cartBooks = this.cartBooks.filter(
             book => { return book.title.includes(filter)}
           )
         }
 
-        this.books = filteredBooks;
+        
       },
       async changeMode(mode){
-        this.catalogMode = mode;
-        console.log(mode)
-        this.allBooks = await this.fetchBooks();
-        this.book = this.allBooks;
+        
+        if(mode){
+          this.catalogBooks = await this.fetchBooks(true);
+        }
+        else{
+          this.cartBooks = await this.fetchBooks(false);
+        }
+      },
+      async addOrRemoveFromCart(book, mode){
+        
+        let firstEndpoint, secondEndpoint;
+        if(mode){
+          //se è true vuol dire che stiamo aggiungendo un libro al carrello
+          firstEndpoint = this.cartEndpoint;
+          secondEndpoint = this.catalogEndpoint + book.id;
+        }
+        else{
+          firstEndpoint = this.catalogEndpoint;
+          secondEndpoint = this.cartEndpoint + book.id;
+        }
 
-        console.log(this.allBooks)
+        await fetch(firstEndpoint,
+          {
+            method : "POST",
+            headers:{
+              'Content-type':'application/json'
+            },
+            body :  JSON.stringify(book)
+          }
+        )
+
+        await fetch(secondEndpoint,
+          {
+            method : "DELETE",
+            headers : {
+              'Content-type' : 'application/json'
+            }
+          }
+        )
+
+        this.catalogBooks = await this.fetchBooks(true)
+        this.cartBooks = await this.fetchBooks(false)
+
+      },
+      async checkout(){
+        // for(let i = 0; i< this.cartBooks.length; i++){
+        //   await this.addOrRemoveFromCart(this.cartBooks[i], false);
+        // }
+        this.cartBooks.forEach(
+          async book =>{
+            await this.addOrRemoveFromCart(book, false)
+          }
+        )
+
+        this.cartBooks = await this.fetchBooks(false);
       }
 
     },
@@ -58,7 +112,7 @@
 
 <template>
   <SiteNavbar @filter-changed="reloadFilter" @change-view="changeMode"/>  
-  <RouterView :catalogList="this.books" :cartList="this.books"></RouterView>
+  <RouterView v :catalogList="this.catalogBooks" :cartList="this.cartBooks" @add-to-cart="addOrRemoveFromCart" @remove-from-cart="addOrRemoveFromCart" @checkout="checkout"></RouterView>
 </template>
 
 <style scoped>

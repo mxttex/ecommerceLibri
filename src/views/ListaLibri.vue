@@ -1,11 +1,7 @@
 <script>
     export default{
         props:["catalogList"],
-        data(){
-            return{
-                books: this.catalogList,
-            }
-        },
+        
         emits:["add-to-cart"]
         }
 </script>
@@ -13,7 +9,7 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
         <div class="row justify-content-left" style="display: flex;">
-            <div class="col-md-3" v-for="book in this.books" :key="book.id" style="flex: 1;">
+            <div class="col-md-3" v-for="book in this.catalogList" :key="book.id" style="flex: 1;">
                 <div class="card m-1 h-100">
                     <img :src="book.coverUrl" class="card-img-top" :alt="book.title" >
                     <div class="card-body d-flex flex-column">
