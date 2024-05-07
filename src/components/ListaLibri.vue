@@ -39,7 +39,7 @@ import SiteNavbar from './SiteNavbar.vue';
                 this.books = await this.FilterBook(filter);
             },
             async addToCart(book){
-                await fetch(this.cartEndpoint + book.id,
+                await fetch(this.cartEndpoint,
                     {
                         method : "POST",
                         headers:{
