@@ -38,10 +38,10 @@
         }
         else{
           this.catalogBooks = this.catalogBooks.filter(
-            book => { return book.title.includes(filter)}
+            book => { return book.title.toUpperCase().includes(filter.toUpperCase())}
           )
           this.cartBooks = this.cartBooks.filter(
-            book => { return book.title.includes(filter)}
+            book => { return book.title.toUpperCase().includes(filter.toUpperCase())}
           )
         }
 

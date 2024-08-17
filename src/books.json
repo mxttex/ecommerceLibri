@@ -9,14 +9,6 @@
       "first_publish_year": 1905
     },
     {
-      "id": "2e64",
-      "title": "Il fu Mattia Pascal",
-      "author": "Luigi Pirandello",
-      "category": "Romanzo",
-      "coverUrl": "https://covers.openlibrary.org/b/id/0010362119-L.jpg",
-      "first_publish_year": 1949
-    },
-    {
       "id": "abcd",
       "title": "Harry Potter e la pietra filosofale",
       "author": "J.K. Rowling",
@@ -47,6 +39,14 @@
       "category": "Fantasy",
       "coverUrl": "https://covers.openlibrary.org/b/id/9269962-M.jpg",
       "first_publish_year": 1996
+    },
+    {
+      "id": "2e64",
+      "title": "Il fu Mattia Pascal",
+      "author": "Luigi Pirandello",
+      "category": "Romanzo",
+      "coverUrl": "https://covers.openlibrary.org/b/id/0010362119-L.jpg",
+      "first_publish_year": 1949
     }
   ],
   "cart": []
